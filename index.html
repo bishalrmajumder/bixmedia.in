@@ -76,7 +76,7 @@ p{margin:0}
   background:var(--glass);border-bottom:2px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;gap:20px;padding-block:12px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 22px/1 var(--f-display);letter-spacing:-.03em}
-.brand small{font:400 15px var(--f-hand);color:var(--pink);margin-left:-4px}
+.brand small{font:400 1.12em/1 var(--f-hand);color:var(--pink);margin-left:-9px;display:inline-block;transform:rotate(-4deg) translateY(1px)}
 .logo{width:36px;height:36px;fill:none;stroke:currentColor;stroke-width:22}
 .logo .draw{stroke-dasharray:900;stroke-dashoffset:0;animation:draw 1.6s .2s ease-out both}
 @keyframes draw{from{stroke-dashoffset:900}}
@@ -325,7 +325,6 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="bixmedia.in home">
-      <svg class="logo" viewBox="320 310 390 370" aria-hidden="true"><path class="draw" d="M345 330V550"/><circle class="draw" cx="450" cy="550" r="105"/><path class="draw" d="M555 550V520a62 62 0 0 1 124 0V657"/></svg>
       bixmedia<small>.in</small>
     </a>
     <nav class="navlinks" aria-label="Main">
@@ -366,7 +365,7 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
         </div>
       </div>
       <div class="stage-box" id="stageBox">
-        <canvas id="stage" aria-label="Interactive 3D film gear: a cinema camera, a clapperboard, a studio light, a microphone, a film reel and a lens. Click them to spin."></canvas>
+        <canvas id="stage" aria-label="The bixmedia.in logo in 3D, surrounded by film gear: a cinema camera, a clapperboard, a studio light, a microphone and a lens. Click them to spin."></canvas>
         <div class="stage-fallback"><svg class="logo" viewBox="320 310 390 370"><path d="M345 330V550"/><circle cx="450" cy="550" r="105"/><path d="M555 550V520a62 62 0 0 1 124 0V657"/></svg></div>
         <div class="stage-note"><svg viewBox="0 0 60 46"><path d="M56 6C40 2 18 10 10 36M10 36l-2-12M10 36l11-5"/></svg>go on, poke the toys</div>
       </div>
@@ -433,7 +432,7 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
           <span class="val" id="phoneVal">+91 62892 32792</span>
           <div class="row">
             <a class="mini" href="https://wa.me/916289232792?text=Hi%20bixmedia.in!" target="_blank" rel="noopener">DM Us</a>
-            <a class="mini" href="tel:+916289232792">Call</a>
+            <a class="mini" href="tel:+916289232792">Call Us</a>
           </div>
         </div>
         <div class="cc pop" style="--acc:var(--sky)">
@@ -774,7 +773,7 @@ function toy(g,x,y,z,sc){g.position.set(x,y,z);g.scale.setScalar(sc);g.userData=
  const lens=part(new THREE.CylinderGeometry(.36,.46,.6,28),'--sky');lens.rotation.z=Math.PI/2;lens.position.x=1.1;g.add(lens);
  [-.45,.4].forEach(x=>{const r=part(new THREE.CylinderGeometry(.42,.42,.18,28),'--sun',1.1);r.rotation.x=Math.PI/2;r.position.set(x,.95,0);g.add(r)});
  const hd=part(new THREE.BoxGeometry(.5,.12,.3),'--grape',1.15);hd.position.set(-.2,-.62,0);g.add(hd);
- toy(g,-1.5,1.25,0,.95);}
+ toy(g,-3.05,2.2,-.4,.8);}
 // clapperboard (the top stick claps)
 {const g=new THREE.Group();const brd=part(new THREE.BoxGeometry(1.6,1.05,.14),'--grape',1.06);brd.position.y=-.2;g.add(brd);
  for(let k=0;k<2;k++){const l=new THREE.Mesh(new THREE.BoxGeometry(1.2,.05,.16),toon('--paper'));l.position.set(0,-.1-k*.28,0);g.add(l)}
@@ -782,7 +781,7 @@ function toy(g,x,y,z,sc){g.position.set(x,y,z);g.scale.setScalar(sc);g.userData=
  const st=part(new THREE.BoxGeometry(1.6,.24,.16),'--sun',1.1);st.position.x=.8;piv.add(st);
  for(let k=0;k<4;k++){const s=new THREE.Mesh(new THREE.BoxGeometry(.16,.25,.18),toon('--on-accent'));s.position.set(.2+k*.38,0,0);s.rotation.z=.5;piv.add(s)}
  const fix=part(new THREE.BoxGeometry(1.6,.16,.16),'--sun',1.1);fix.position.y=.24;g.add(fix);
- g.userData.clap=piv;toy(g,1.85,1.45,-.4,1);}
+ g.userData.clap=piv;toy(g,2.75,2.05,-.4,.9);}
 // studio light on a stand
 {const g=new THREE.Group();const head=part(new THREE.CylinderGeometry(.42,.5,.75,24),'--lime',1.08);head.rotation.x=Math.PI/2;head.position.y=.55;g.add(head);
  const glass=new THREE.Mesh(new THREE.CircleGeometry(.4,24),new THREE.MeshBasicMaterial({color:0xfff6c8}));glass.position.set(0,.55,.39);g.add(glass);
@@ -791,7 +790,7 @@ function toy(g,x,y,z,sc){g.position.set(x,y,z);g.scale.setScalar(sc);g.userData=
  const yk=part(new THREE.BoxGeometry(.08,.5,.08),'--stroke',1.2);yk.position.y=.05;g.add(yk);
  const pole=part(new THREE.CylinderGeometry(.05,.05,1,10),'--stroke',1.2);pole.position.y=-.5;g.add(pole);
  const ft=part(new THREE.CylinderGeometry(.42,.48,.1,24),'--pink',1.1);ft.position.y=-1;g.add(ft);
- toy(g,2.15,-1.1,.2,.9);}
+ toy(g,2.85,-1.55,.1,.85);}
 // studio microphone
 {const g=new THREE.Group();const cap=part(new THREE.CylinderGeometry(.32,.32,.6,20),'--sky',1.08);cap.position.y=.4;g.add(cap);
  [.7,.1].forEach(y=>{const s=part(new THREE.SphereGeometry(.32,20,14),'--sky',1.08);s.position.y=y;g.add(s)});
@@ -799,12 +798,24 @@ function toy(g,x,y,z,sc){g.position.set(x,y,z);g.scale.setScalar(sc);g.userData=
  const yoke=part(new THREE.TorusGeometry(.45,.05,8,28,Math.PI),'--stroke',1.15);yoke.rotation.z=Math.PI;yoke.position.y=.3;g.add(yoke);
  const stem=part(new THREE.CylinderGeometry(.06,.06,.7,10),'--stroke',1.2);stem.position.y=-.45;g.add(stem);
  const base=part(new THREE.CylinderGeometry(.4,.45,.1,24),'--pink',1.1);base.position.y=-.82;g.add(base);
- toy(g,-1.85,-1.35,.2,1);}
-// film reel (centre, back)
-{const g=new THREE.Group();g.add(part(new THREE.TorusGeometry(.8,.17,14,44),'--sun',1.12));
- const hub=part(new THREE.CylinderGeometry(.24,.24,.3,20),'--grape',1.15);hub.rotation.x=Math.PI/2;g.add(hub);
- for(let k=0;k<3;k++){const sp=part(new THREE.BoxGeometry(.09,.7,.09),'--grape',1.2);sp.rotation.z=k*Math.PI/3*2;sp.position.set(Math.sin(-k*2.094)*.42,Math.cos(-k*2.094)*.42,0);g.add(sp)}
- toy(g,.2,.15,-1.5,.95);}
+ toy(g,-2.8,-1.65,.1,.9);}
+// bn logo (centre): tubes traced from the logo, draws itself in, sways
+const logoGeos=[];let logoT0=0;
+{const S=1/112,v=(x,y)=>new THREE.Vector3((x-512)*S,-(y-493)*S,0),TR=.12;
+ const arc=(cx,cy,r,a0,a1,n)=>{const pts=[];for(let k=0;k<=n;k++){const a=a0+(a1-a0)*k/n;pts.push(v(cx+r*Math.cos(a),cy-r*Math.sin(a)))}return pts};
+ const stem=new THREE.LineCurve3(v(345,330),v(345,550));
+ const ring=new THREE.CatmullRomCurve3(arc(450,550,105,Math.PI,Math.PI-6.2832,72),true);
+ const n=new THREE.CurvePath();n.add(new THREE.LineCurve3(v(555,550),v(555,520)));
+ n.add(new THREE.CatmullRomCurve3(arc(617,520,62,Math.PI,0,36)));n.add(new THREE.LineCurve3(v(679,520),v(679,657)));
+ [[stem,8,false],[ring,120,true],[n,90,false]].forEach(([c,seg,cl])=>logoGeos.push(new THREE.TubeGeometry(c,seg,TR,14,cl)));
+ const mk=key=>{const m=toon(key);m.side=THREE.DoubleSide;return m};
+ const front=mk('--fg'),back=mk('--pink');
+ const g=new THREE.Group(),inner=new THREE.Group();g.add(inner);
+ const shadow=new THREE.Group();shadow.position.set(.09,-.09,-.22);inner.add(shadow);
+ logoGeos.forEach(geo=>{inner.add(new THREE.Mesh(geo,front));shadow.add(new THREE.Mesh(geo,back))});
+ const cap=new THREE.CircleGeometry(TR,14);
+ [[v(345,330),1],[v(679,657),-1]].forEach(([pt,dir])=>[[inner,front],[shadow,back]].forEach(([grp,m])=>{const c=new THREE.Mesh(cap,m);c.position.copy(pt);c.rotation.x=-dir*Math.PI/2;grp.add(c)}));
+ g.userData.logo=true;toy(g,0,.05,.4,1.05);}
 const mini=[];
 // handheld mic
 {const g=new THREE.Group();const hd=part(new THREE.SphereGeometry(.2,16,12),'--pink',1.15);hd.position.y=.22;g.add(hd);
@@ -834,8 +845,10 @@ function toyOf(o){while(o&&!toys.includes(o))o=o.parent;return o}
 box.addEventListener('pointermove',e=>{const r=box.getBoundingClientRect();mv.x=(e.clientX-r.left)/r.width*2-1;mv.y=-(e.clientY-r.top)/r.height*2+1});
 box.addEventListener('pointerleave',()=>mv.set(9,9));
 addEventListener('pointermove',e=>{mx=e.clientX/innerWidth*2-1;my=e.clientY/innerHeight*2-1});
-box.addEventListener('click',()=>{if(hovered){hovered.userData.spin+=0.45;toast(['Rolling! (Film production)','Scene 1, take 1… action!','Lights on (Cinematics)','Mic check, 1, 2 (Sound)','Reel it in (Editing)','Mic drop (Content)','Bright idea (Creative)','Clap! (Shoot day)','In focus (Photography)','Spotlight on you (PR & Talent)'][toys.indexOf(hovered)]||'Boing!')}});
+box.addEventListener('click',()=>{if(hovered){hovered.userData.spin+=0.45;if(hovered.userData.logo){hovered.userData.spin=.42;logoT0=clock.getElapsedTime()}toast(['Rolling! (Film production)','Scene 1, take 1… action!','Lights on (Cinematics)','Mic check, 1, 2 (Sound)','bixmedia.in, that’s us!','Mic drop (Content)','Bright idea (Creative)','Clap! (Shoot day)','In focus (Photography)','Spotlight on you (PR & Talent)'][toys.indexOf(hovered)]||'Boing!')}});
 
+const drawLogo=t=>{const p=reduce?1:Math.min(1,(t-logoT0)/1.8),e=1-Math.pow(1-p,3),parts=[.22,.5,.28];let acc=0;
+  logoGeos.forEach((geo,i)=>{const f=Math.max(0,Math.min(1,(e-acc)/parts[i]));acc+=parts[i];geo.setDrawRange(0,Math.floor(geo.index.count*f/3)*3)})};
 let vis=true;new IntersectionObserver(es=>vis=es[0].isIntersecting).observe(box);
 const clock=new THREE.Clock();
 (function tick(){requestAnimationFrame(tick);if(!vis)return;
@@ -845,7 +858,8 @@ const clock=new THREE.Clock();
   world.rotation.y+=((mx*.35)-world.rotation.y)*.05;world.rotation.x+=((my*.2)-world.rotation.x)*.05;
   toys.forEach(g=>{const u=g.userData;
     g.position.y=u.by+Math.sin(t*1.1*k+u.ph)*.18;g.position.x=u.bx+Math.cos(t*.7*k+u.ph)*.08;
-    u.spin*=.96;g.rotation.y+=(.004*k)+u.spin;g.rotation.x=Math.sin(t*.6*k+u.ph)*.25+u.rx;g.rotation.z=Math.cos(t*.5*k+u.ph)*.12;
+    if(u.logo){u.spin*=.95;u.turn=(u.turn||0)+u.spin;g.rotation.y=Math.sin(t*.7*k)*.55+u.turn;g.rotation.x=Math.sin(t*.5*k)*.12;g.rotation.z=0;g.position.x=u.bx;drawLogo(t)}
+    else{u.spin*=.96;g.rotation.y+=(.004*k)+u.spin;g.rotation.x=Math.sin(t*.6*k+u.ph)*.25+u.rx;g.rotation.z=Math.cos(t*.5*k+u.ph)*.12;}
     if(u.clap)u.clap.rotation.z=Math.max(0,Math.sin(t*2.2*k))*.45;
     u.hov+=((g===hovered?1:0)-u.hov)*.15;const s=g.userData.base||(g.userData.base=g.scale.x);g.scale.setScalar(s*(1+u.hov*.18));});
   renderer.render(scene,cam);
