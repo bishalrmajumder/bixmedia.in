@@ -124,7 +124,9 @@ p{margin:0}
 .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
 .stage-box{position:relative;height:clamp(380px,46vw,560px);min-width:0}
 #stage{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
-.stage-note{position:absolute;right:6%;bottom:4%;font:22px var(--f-hand);color:var(--pink);transform:rotate(-6deg);display:flex;align-items:flex-end;gap:6px;pointer-events:none}
+.stage-note{position:absolute;left:50%;top:0;translate:-50% 0;font:22px var(--f-hand);color:var(--pink);transform:rotate(-4deg);display:flex;align-items:flex-start;gap:4px;pointer-events:none;z-index:2;white-space:nowrap}
+.stage-note svg{margin-top:12px}
+@media (max-width:860px){.dd-mic{left:auto!important;right:5%;top:auto!important;bottom:3%}}
 .stage-note svg{width:60px;height:46px;fill:none;stroke:var(--pink);stroke-width:2.4;stroke-linecap:round}
 .stage-fallback{position:absolute;inset:10%;display:none;place-items:center}
 .stage-fallback svg{width:70%;stroke:var(--fg)}
@@ -351,7 +353,7 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
     <!-- clapperboard -->
     <div class="doodle" data-speed=".22" style="left:52%;top:8%"><svg width="66" height="58" viewBox="0 0 66 58"><path d="M6 24h54v30H6z" stroke="var(--grape)" stroke-width="3"/><path d="M6 24L4 12l52-10 2 12zM16 10l8 12M30 7l8 13M44 4l8 13" stroke="var(--grape)" stroke-width="3"/><path d="M14 34h22M14 43h14" stroke="var(--grape)" stroke-width="3"/></svg></div>
     <!-- mic -->
-    <div class="doodle" data-speed=".18" style="left:30%;top:2%"><svg width="48" height="62" viewBox="0 0 48 62"><rect x="15" y="4" width="18" height="30" rx="9" stroke="var(--lime)" stroke-width="3"/><path d="M15 15h7M15 23h7M8 26a16 16 0 0 0 32 0M24 42v14M14 58h20" stroke="var(--lime)" stroke-width="3"/></svg></div>
+    <div class="doodle dd-mic" data-speed=".18" style="left:30%;top:2%"><svg width="48" height="62" viewBox="0 0 48 62"><rect x="15" y="4" width="18" height="30" rx="9" stroke="var(--lime)" stroke-width="3"/><path d="M15 15h7M15 23h7M8 26a16 16 0 0 0 32 0M24 42v14M14 58h20" stroke="var(--lime)" stroke-width="3"/></svg></div>
     <div class="wrap">
       <div class="hero-copy">
         <span class="eyebrow"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7" r="2.2" fill="var(--bg)"/><circle cx="12" cy="17" r="2.2" fill="var(--bg)"/><circle cx="7" cy="12" r="2.2" fill="var(--bg)"/><circle cx="17" cy="12" r="2.2" fill="var(--bg)"/></svg>Creative + tech, across India</span>
@@ -371,7 +373,7 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
       <div class="stage-box" id="stageBox">
         <canvas id="stage" aria-label="The bixmedia.in logo in 3D, surrounded by film gear: a cinema camera, a clapperboard, a studio light, a microphone and a lens. Click them to spin."></canvas>
         <div class="stage-fallback"><svg class="logo" viewBox="320 310 390 370"><path d="M345 330V550"/><circle cx="450" cy="550" r="105"/><path d="M555 550V520a62 62 0 0 1 124 0V657"/></svg></div>
-        <div class="stage-note"><svg viewBox="0 0 60 46"><path d="M56 6C40 2 18 10 10 36M10 36l-2-12M10 36l11-5"/></svg>go on, poke the toys</div>
+        <div class="stage-note">go on, poke the toys<svg viewBox="0 0 60 46"><path d="M4 8C26 4 46 14 48 40M48 40l-9-6M48 40l4-11"/></svg></div>
       </div>
     </div>
   </section>
@@ -670,6 +672,18 @@ function endDrag(e){
 }
 stage.addEventListener('pointerup',endDrag);stage.addEventListener('pointercancel',e=>{drag=false;downPanel=null;if(cur!==null)select(frontIdx(ang));else idle=true});
 stage.addEventListener('click',e=>e.preventDefault());
+let wheelT;
+stage.addEventListener('wheel',e=>{
+  const ax=Math.abs(e.deltaX),ay=Math.abs(e.deltaY);
+  const d=ax>ay?e.deltaX:(e.shiftKey?e.deltaY:0);   // two-finger sideways swipe (or shift + wheel); vertical scroll still scrolls the page
+  if(!d)return;
+  e.preventDefault();
+  const px=e.deltaMode===1?d*16:d;
+  idle=false;target=null;
+  vel=Math.max(-9,Math.min(9,-px*.14));
+  clearTimeout(wheelT);
+  wheelT=setTimeout(()=>{if(drag)return;if(cur!==null)select(frontIdx(ang+vel*12));else setTimeout(()=>{if(!drag&&cur===null)idle=true},1500)},180);
+},{passive:false});
 new IntersectionObserver(es=>reelVisible=es[0].isIntersecting).observe(stage);
 (function spin(){ if(reelVisible){ if(!drag){ if(target!==null){ang+=(target-ang)*(reduce?1:.14);vel=0} else {vel*=.95; if(idle&&!reduce) vel+= (.12-vel)*.02; ang+=vel;} } ring.style.setProperty('--ang',ang+'deg'); } requestAnimationFrame(spin)})();
 
@@ -855,7 +869,7 @@ const clock=new THREE.Clock();
   world.rotation.y+=((mx*.35)-world.rotation.y)*.05;world.rotation.x+=((my*.2)-world.rotation.x)*.05;
   toys.forEach(g=>{const u=g.userData;
     g.position.y=u.by+Math.sin(t*1.1*k+u.ph)*.18;g.position.x=u.bx+Math.cos(t*.7*k+u.ph)*.08;
-    if(u.logo){u.spin*=.95;u.turn=(u.turn||0)+u.spin;g.rotation.y=Math.sin(t*.7*k)*.55+u.turn;g.rotation.x=Math.sin(t*.5*k)*.12;g.rotation.z=0;g.position.x=u.bx;drawLogo(t)}
+    if(u.logo){u.spin*=.95;u.turn=(u.turn||0)+u.spin;if(Math.abs(u.spin)<.02){const home=Math.round(u.turn/6.2832)*6.2832;u.turn+=(home-u.turn)*.06}g.rotation.y=Math.sin(t*.7*k)*.35+u.turn;g.rotation.x=Math.sin(t*.5*k)*.12;g.rotation.z=0;g.position.x=u.bx;drawLogo(t)}
     else{u.spin*=.96;g.rotation.y+=(.004*k)+u.spin;g.rotation.x=Math.sin(t*.6*k+u.ph)*.25+u.rx;g.rotation.z=Math.cos(t*.5*k+u.ph)*.12;}
     if(u.clap)u.clap.rotation.z=Math.max(0,Math.sin(t*2.2*k))*.45;
     u.hov+=((g===hovered?1:0)-u.hov)*.15;const s=g.userData.base||(g.userData.base=g.scale.x);g.scale.setScalar(s*(1+u.hov*.18));});
