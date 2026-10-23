@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>bixmedia.in</title>
+<title>bixmedia.in | Video Production, Photography, Website & Digital Marketing Agency in India</title>
 <meta name="description" content="bixmedia.in is a creative and tech agency serving brands across India, headquartered in Kolkata: ad films, photography, videography, video editing, content creation, website development, e-commerce, Razorpay/UPI payment integration, Google Apps Script automation, PR, talent management, social media and digital marketing.">
 <meta name="keywords" content="creative agency India, creative agency Kolkata, video production company India, video production company Kolkata, ad film makers India, ad film makers Kolkata, corporate video production, brand film production, documentary filmmakers, photography services India, product photography, food photography, fashion photography, event videography, cinematic video production, video editing services India, reels editing service, YouTube video editing, motion graphics, content creation agency India, social media content creator, thumbnail design, website design company India, website development Kolkata, landing page design, small business website India, e-commerce website development, online store for small business, Razorpay integration, UPI payment gateway integration, payment link setup, Google Apps Script automation, Google Sheets automation, Google Sheets dashboard, business automation services, database management for small business, social media marketing agency India, social media management services, Instagram marketing, Meta ads agency, Google Ads management, SEO services India, influencer marketing agency, PR agency India, PR agency Kolkata, press release services, talent management agency India, creator management, digital marketing agency India, digital marketing agency Kolkata, bixmedia.in">
 <meta name="robots" content="index, follow">
@@ -241,6 +241,10 @@ section{position:relative;padding-block:clamp(56px,8vw,100px)}
   display:flex;flex-direction:column;gap:10px;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
 .cc:hover{transform:rotate(-1deg) translateY(-4px)}
 .cc.wide{grid-column:span 3}
+.cc.full{grid-column:1/-1}
+@media (min-width:901px){.cc.full{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);grid-template-rows:auto auto 1fr;column-gap:30px;align-items:start}
+ .cc.full .lbl,.cc.full .val,.cc.full .row{grid-column:1}.cc.full .row{align-self:end}
+ .cc.full .map{grid-column:2;grid-row:1/4;align-self:center;margin:0}}
 .cc .lbl{display:flex;align-items:center;gap:10px;font:700 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .cc .lbl i{width:34px;height:34px;border-radius:10px;border:2px solid var(--stroke);background:var(--acc);display:grid;place-items:center}
 .cc .lbl svg{width:18px;height:18px;fill:none;stroke:var(--on-accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
@@ -253,7 +257,7 @@ section{position:relative;padding-block:clamp(56px,8vw,100px)}
 .map{position:relative;border-radius:12px;border:2px solid var(--line);overflow:hidden;background:var(--bg)}
 .map svg{display:block;width:100%;height:auto}
 @media (max-width:900px){.cc,.cc.wide{grid-column:span 3}}
-@media (max-width:600px){.contact-grid{grid-template-columns:1fr}.cc,.cc.wide{grid-column:auto}}
+@media (max-width:600px){.contact-grid{grid-template-columns:1fr}.cc,.cc.wide,.cc.full{grid-column:auto}}
 
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,calc(100% + 60px));background:var(--fg);color:var(--bg);
   font:600 15px var(--f-body);padding:12px 20px;border-radius:999px;z-index:80;visibility:hidden;transition:transform .35s cubic-bezier(.3,1.6,.5,1),visibility 0s .35s}
@@ -447,7 +451,7 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
           <span class="val">Just DM us to know.</span>
           <p class="note">Shoots run on the client's clock, code runs on ours. Message anytime and we'll set a time that works.</p>
         </div>
-        <div class="cc wide pop" style="--acc:var(--pink)">
+        <div class="cc full pop" style="--acc:var(--pink)">
           <span class="lbl"><i><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></i>Head office</span>
           <span class="val">Room No. 309, 3rd Floor, Century Plaza, 81 Netaji Subhas Road, Kolkata 700001</span>
           <div class="map" aria-hidden="true">
@@ -467,12 +471,6 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
             <a class="mini" href="https://www.google.com/maps/search/?api=1&amp;query=Century+Plaza+81+Netaji+Subhas+Road+Kolkata+700001" target="_blank" rel="noopener">Open in Google Maps ↗</a>
             <button class="mini" data-copy="Room No. 309, 3rd Floor, Century Plaza, 81 Netaji Subhas Road, Kolkata 700001" type="button">Copy address</button>
           </div>
-        </div>
-        <div class="cc wide pop" style="--acc:var(--grape)">
-          <span class="lbl"><i><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></i>GSTIN</span>
-          <span class="val mono">19CSKPM1909G1ZJ</span>
-          <p class="note">Registered in West Bengal. Proper GST invoices for every project, so your accounts team stays happy.</p>
-          <div class="row"><button class="mini" data-copy="19CSKPM1909G1ZJ" type="button">Copy GSTIN</button></div>
         </div>
       </div>
     </div>
@@ -508,7 +506,7 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
     <h3>What we collect</h3>
     <p>Only what you send us: your name, phone number, email and project details when you message us on WhatsApp, email us or fill in the brief builder. This site has no sign-up and does not ask for payment details.</p>
     <h3>How we use it</h3>
-    <p>To reply to you, prepare quotes and GST invoices, deliver your project and keep you updated. We do not sell or rent your information to anyone.</p>
+    <p>To reply to you, prepare quotes and invoices, deliver your project and keep you updated. We do not sell or rent your information to anyone.</p>
     <h3>Cookies and storage</h3>
     <p>The site remembers your light or dark theme choice in your own browser. Fonts and the 3D library load from Google Fonts and Cloudflare, which may log basic technical data such as your IP address.</p>
     <h3>Your photos, videos and files</h3>
@@ -517,7 +515,7 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
     <p>Payments run through regulated providers such as Razorpay or your bank's UPI app, under their own privacy policies. Messages sent on WhatsApp are covered by WhatsApp's policy.</p>
     <h3>Your choices</h3>
     <p>Ask us anytime to see, correct or delete the details we hold about you: info@bixmedia.in or +91 62892 32792.</p>
-    <p class="addr">bixmedia.in, Room No. 309, 3rd Floor, Century Plaza, 81 Netaji Subhas Road, Kolkata 700001 · GSTIN 19CSKPM1909G1ZJ</p>
+    <p class="addr">bixmedia.in, Room No. 309, 3rd Floor, Century Plaza, 81 Netaji Subhas Road, Kolkata 700001</p>
   </div>
 </dialog>
 
@@ -530,7 +528,6 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
       <li><b>Quote first.</b> Every project starts with a written scope, timeline and price.</li>
       <li><b>Advance to book.</b> An advance confirms your shoot date or build slot. The balance is due on delivery.</li>
       <li><b>Pay your way.</b> UPI, bank transfer (NEFT/IMPS/RTGS) or a secure Razorpay payment link for cards and net banking.</li>
-      <li><b>GST invoice.</b> A proper tax invoice for every payment, issued under GSTIN <span class="mono">19CSKPM1909G1ZJ</span>.</li>
     </ol>
     <p class="note">We share payment details only on your invoice or from +91 62892 32792 / info@bixmedia.in. If anyone else asks you to pay bixmedia.in, check with us first.</p>
     <div class="row"><a class="btn wa" href="https://wa.me/916289232792?text=Hi%20bixmedia.in!%20Please%20share%20a%20payment%20link%20for%20my%20invoice." target="_blank" rel="noopener">Ask for a payment link</a></div>
@@ -542,7 +539,7 @@ footer{border-top:2px solid var(--line);padding-block:22px 26px}
 "description":"Creative and tech agency headquartered in Kolkata, serving brands across India: video production, ad films, photography, video editing, content creation, website development, e-commerce, payment gateway integration, Google Apps Script automation, PR, talent management, social media management and digital marketing.",
 "keywords":"creative agency India, creative agency Kolkata, video production company India, video production company Kolkata, ad film makers India, ad film makers Kolkata, corporate video production, brand film production, documentary filmmakers, photography services India, product photography, food photography, fashion photography, event videography, cinematic video production, video editing services India, reels editing service, YouTube video editing, motion graphics, content creation agency India, social media content creator, thumbnail design, website design company India, website development Kolkata, landing page design, small business website India, e-commerce website development, online store for small business, Razorpay integration, UPI payment gateway integration, payment link setup, Google Apps Script automation, Google Sheets automation, Google Sheets dashboard, business automation services, database management for small business, social media marketing agency India, social media management services, Instagram marketing, Meta ads agency, Google Ads management, SEO services India, influencer marketing agency, PR agency India, PR agency Kolkata, press release services, talent management agency India, creator management, digital marketing agency India, digital marketing agency Kolkata, bixmedia.in",
 "address":{"@type":"PostalAddress","streetAddress":"Room No. 309, 3rd Floor, Century Plaza, 81 Netaji Subhas Road","addressLocality":"Kolkata","addressRegion":"West Bengal","postalCode":"700001","addressCountry":"IN"},
-"areaServed":{"@type":"Country","name":"India"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"bixmedia.in services","itemListElement":[{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Film Production & Visual Media Services", "description": "Includes Filmography, Photography, Videography, Cinematics."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Video Editing & Post-Production Services", "description": "Includes Editing, Motion & Reels Packs."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content Creation & Digital Creative Services", "description": "Includes Content Creation, Thumbnails & Graphics."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Website Development & Digital Solutions", "description": "Includes Website Building, Landing Pages, Portfolios, Basic E-commerce."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Database Management & Business Automation Services", "description": "Includes Apps Script, Google Sheets, DBMS, Automations, Dashboards."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Payment Integration & Financial Technology Solutions", "description": "Includes Razorpay, UPI Payments, Payment Gateways, Payment Links."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Public Relations & Media Communications", "description": "Includes Press Releases, Media Outreach, Brand Launches."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Talent & Influencer Management Services", "description": "Includes Creator Management, Bookings, Brand Deals."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Social Media Management & Community Engagement", "description": "Includes Social Media Management, Content Calendars, Community Management, Insights."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Digital Marketing & Performance Advertising Services", "description": "Includes SEO, Meta Ads, Google Ads, Digital Campaigns, Analytics."}}]},"taxID":"19CSKPM1909G1ZJ",
+"areaServed":{"@type":"Country","name":"India"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"bixmedia.in services","itemListElement":[{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Film Production & Visual Media Services", "description": "Includes Filmography, Photography, Videography, Cinematics."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Video Editing & Post-Production Services", "description": "Includes Editing, Motion & Reels Packs."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content Creation & Digital Creative Services", "description": "Includes Content Creation, Thumbnails & Graphics."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Website Development & Digital Solutions", "description": "Includes Website Building, Landing Pages, Portfolios, Basic E-commerce."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Database Management & Business Automation Services", "description": "Includes Apps Script, Google Sheets, DBMS, Automations, Dashboards."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Payment Integration & Financial Technology Solutions", "description": "Includes Razorpay, UPI Payments, Payment Gateways, Payment Links."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Public Relations & Media Communications", "description": "Includes Press Releases, Media Outreach, Brand Launches."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Talent & Influencer Management Services", "description": "Includes Creator Management, Bookings, Brand Deals."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Social Media Management & Community Engagement", "description": "Includes Social Media Management, Content Calendars, Community Management, Insights."}},{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Digital Marketing & Performance Advertising Services", "description": "Includes SEO, Meta Ads, Google Ads, Digital Campaigns, Analytics."}}]},
 "knowsAbout":["Video production","Ad films","Photography","Videography","Cinematic video","Video editing","Content creation","Website development","E-commerce","Payment gateway integration","Google Apps Script","Google Sheets automation","Public relations","Talent management","Social media management","Digital marketing","SEO"]}
 </script>
 
@@ -680,7 +677,7 @@ new IntersectionObserver(es=>reelVisible=es[0].isIntersecting).observe(stage);
 const P=[
  ['DM us','Drop a WhatsApp or email. A voice note works too.','--pink'],
  ['Brief call','Fifteen minutes on what you want, who it is for and the deadline.','--sun'],
- ['Plan & quote','A clear scope, timeline and GST invoice-ready quote. No surprises.','--sky'],
+ ['Plan & quote','A clear scope, timeline and quote. No surprises.','--sky'],
  ['Shoot or build','Cameras roll or code ships. You get previews as we go.','--lime'],
  ['Edit & launch','Final cut, final site, final files. We help you put it live.','--grape'],
  ['Grow & report','Ads, posts and PR to push it further, with numbers every month.','--pink']];
